@@ -35,7 +35,7 @@ const callGeminiAPI = async (userText, imageFile) => {
 
     if (parts.length === 0) return "❌ Please provide text or image.";
 
-    const API_KEY = "AIzaSyBECH8zVX2q8wZ4kye2Z8X7LBKK1bGmLeM"; // put actual Gemini API key here
+    const API_KEY = ""; // put actual Gemini API key here
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`,
       {
@@ -131,3 +131,4 @@ const callGeminiAPI = async (userText, imageFile) => {
 }
 
 export default SoilChatbot;
+
