@@ -49,12 +49,8 @@ const getInitialLanguage = () => {
 /* ---------------- GOOGLE TRANSLATE CONTROL ---------------- */
 
 const applyGoogleTranslate = (lang) => {
-  const el = document.querySelector(".goog-te-combo");
-  if (!el) return false;
-
-  el.value = lang;
-  el.dispatchEvent(new Event("change"));
-  return true;
+  document.cookie = `googtrans=/en/${lang}; path=/`;
+  window.location.reload();
 };
 
 const syncLanguage = (lang, setLang) => {
@@ -85,16 +81,6 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  /* ---------------- LANGUAGE AUTO APPLY ---------------- */
-  useEffect(() => {
-    if (applyGoogleTranslate(preferredLang)) return;
-
-    const id = setInterval(() => {
-      if (applyGoogleTranslate(preferredLang)) clearInterval(id);
-    }, 300);
-
-    return () => clearInterval(id);
-  }, [preferredLang]);
 
   /* ---------------- LOGIN ---------------- */
   const handleLogin = (e) => {
